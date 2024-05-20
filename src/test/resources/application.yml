@@ -1,6 +1,8 @@
 spring:
   application:
     name: fc-board
+  profiles:
+    active: local
   datasource:
     url: jdbc:h2:mem:test
     username: sa
@@ -12,4 +14,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        # Unable to determine Dialect without JDBC metadata...
+        dialect: org.hibernate.dialect.MySQLDialect
     show-sql: true
