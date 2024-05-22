@@ -1,10 +1,9 @@
 package com.fastcampus.fcboard.controller
 
-import com.fastcampus.fcboard.controller.dto.PostCreateRequest
-import com.fastcampus.fcboard.controller.dto.PostDetailResponse
-import com.fastcampus.fcboard.controller.dto.PostUpdateRequest
+import com.fastcampus.fcboard.controller.dto.*
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.web.bind.annotation.*
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 @RestController
@@ -39,5 +38,15 @@ class PostController {
         @PathVariable id: Long,
     ): PostDetailResponse {
         return PostDetailResponse(1L, "title", "content", "createdBy", LocalDateTime.now().toString())
+    }
+
+    @GetMapping("/posts")
+    fun getPosts(
+        pageable: Pageable,
+        postSearchRequest: PostSearchRequest
+    ): Page<PostSummaryResponse> {
+        println("title: ${postSearchRequest.title}")
+        println("createdBy: ${postSearchRequest.createdBy}")
+        return Page.empty()
     }
 }
