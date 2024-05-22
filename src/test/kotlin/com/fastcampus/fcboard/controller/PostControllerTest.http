@@ -22,3 +22,6 @@ Content-Type: application/json
 ### 게시글 삭제
 DELETE /localhost:8080/posts/1?createdBy=harris
 Content-Type: application/json
+
+### 게시글 상세조회
+GET /localhost:8080/posts/1
